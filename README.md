@@ -1,10 +1,10 @@
 
-#Authors        : Said BAHAOUARY & Mina ESSALMI
-#Plugin name    : Semantic 
-#Version        : O.O1
-#contact info   : saidmaster88@gmail.com
-                  essalmi.mina@gmail.com
-#User Guid      :
+    #Authors        : Said BAHAOUARY & Mina ESSALMI
+    #Plugin name    : Semantic 
+    #Version        : O.O1
+    #contact info   :   saidmaster88@gmail.com
+                        essalmi.mina@gmail.com
+    #User Guid      :
 
 ################################# Quick introduction ############################################
 
@@ -19,13 +19,58 @@ It is simple to integrate with your website, you need just to follow ours instru
 
 Our Plugin is based on some external resources that should be installed before using Semantic.
 
-1 => Install wordnet exe
+A => Install wordnet exe
     Ex: Linux OS
-    Debian :    # apt-get update
-                # apt-get install wordnet
+    Debian :
+       # sudo apt-get update
+       # apt-get install wordnet
     
-2 => Install mongodb Data Base
-3 => import on your database wn_pro_mysql.
+B => Install MongoDB Community Edition :
+
+    MongoDB only provides packages for 64-bit LTS (long-term support) Ubuntu releases. For example, 12.04 LTS (precise), 14.04 LTS (trusty), 16.04 LTS (xenial), and so on. These packages may work with other Ubuntu releases, however, they are not supported.
+
+    1=> Import the public key used by the package management system
+    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6
+
+    2=> Create a list file for MongoDB
+
+    Ubuntu 12.04
+    echo "deb [ arch=amd64 ] http://repo.mongodb.org/apt/ubuntu precise/mongodb-org/3.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list
+    Ubuntu 14.04
+    echo "deb [ arch=amd64 ] http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list
+    Ubuntu 16.04
+    echo "deb [ arch=amd64,arm64 ] http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list
+
+    3=> Reload local package database
+    sudo apt-get update
+
+    4=> Install the MongoDB packages
+
+    sudo apt-get install -y mongodb-org
+
+    5=> to remove package
+    sudo apt-get purge mongodb-org*
+
+
+    Note: 
+    To run mongodb server
+    sudo mongod
+
+    To start|stop|restart mongod service
+
+    #check status
+    sudo systemctl status mongodb.service
+
+    sudo systemctl start mongodb.service 		or sudo /etc/init.d/mongod start
+    sudo systemctl stop mongodb.service 		or sudo /etc/init.d/mongod stop
+    sudo systemctl restart mongodb.service 		or sudo /etc/init.d/mongod restart
+
+    for more inforamation visite the whole documentation at : https://docs.mongodb.com/manual/installation/
+    
+C => import on your database wn_pro_mysql.
+link : 
+
+https://drive.google.com/file/d/0B0nk1ILBKD8EOUw2bFNmSU9mVWs/view?usp=sharing
 
 Nota : mongodb needs to add its extension to your php config files
 
@@ -36,12 +81,14 @@ Nota : mongodb needs to add its extension to your php config files
 Semantic gives you more many arrays based on semantic and syntaxic user search, also some based on 
 collaborative filtering, here is some example to use our Plugin
 
-$mongo = new MongoOperations($metadatan,$id,$poid);   # instrance of MongoOperations class
-                                                # it will be used on most mongodb operations
-                                                # $metadata : searched word|null
-                                                # $id       : adresse IP | ID USER|null
-                                                # $poid     : click|command|search // constante var
-                                                              exist in Parametre Class
+$mongo = new MongoOperations($metadatan,$id,$poid);
+      # instrance of MongoOperations class
+      # it will be used on most mongodb operations
+      # $metadata : searched word|null
+      # $id       : adresse IP | ID USER|null
+      # $poid     : click|command|search // constante var
+       exist in Parametre Class
+
 I  ) saving data on mongo db 
 
 1 => save user search|click|products command
@@ -70,9 +117,9 @@ $array_poid = $mongo->highWeight($id, "id");
 III ) simantic Arrays from db mongodb database, synonyms and hyperonyms
 
 1 => get synonyms and hypernyms of word search;
-        $proposition = new Proposition($metadata); // word search
-        $synonymes = $proposition->getPsynonymes(); // array of synonyms 
-        $hyperonymes = $proposition->getPhyperonymes(); // array of hypernyms
+       $proposition = new Proposition($metadata); // word search
+       $synonymes = $proposition->getPsynonymes(); // array of synonyms 
+       $hyperonymes = $proposition->getPhyperonymes(); // array of hypernyms
 
 2 => semantic array holds both syntaxic and semantic meaning of user search
     $mongo->getSimilarProductbyUser($wordSearch, $by);
