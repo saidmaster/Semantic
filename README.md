@@ -139,33 +139,27 @@ arrays output.
 
 #################################################################################################
 
+VI Plugin Parameters
+    
+    # SUEIL                         : Acceptance threshold
+    # LIMIT                         : Limit of articles per result
+    # WordnetPath                   : Path of Wordnet exe
+    # POIDCLICK                     : Weight of clicked articles
+    # POIDSEARCH                    : Weight of Searched articles
+    # POIDCMD                       : Weight of commanded articles
+    # MESURE                        : Used Mesure for syntaxic similarity
+    # LIMITFREQUENCY                : Limit of the most popular product result   
+    # LIMITPOID                     : limit of the high weight product result
+    # SEMANTIC_MESURE               : Used mesure for semantic similarity
+    # LIMIT_SEMANTIC_PRODUCT        : Limit of simantic articles results
+    # LIMIT_Comment_Array           : limit from commented similarity results 
+    # DB_PRO_HOST                   : hostname of SQL wordnet Database 
+    # DB_PRO_NAME                   : DataBase Name of SQL Wordnet 
+    # DB_PRO_USER                   : User name of SQL Wordnet
+    # DB_PRO_PASSWORD               : Password of SQl Wordnet
 
 
 ################### Thanks For Trying, contact us in every new suggestions ######################
-
-
-
-
-
-
-
-
-
-
-2 => save user Comments using a static function saveComment
-    MongoOperations::saveComment($id, $comment , $product_title );
-
-    # $id               : user id 'ip'| 'id'
-    # $comment          : user comment 
-    # $product_title    : name of product
-
-
-
-
-
-
-
-
 
 
 
