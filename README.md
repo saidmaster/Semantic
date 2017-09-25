@@ -152,7 +152,12 @@ arrays output.
 
 
 
+2 => save user Comments using a static function saveComment
+    MongoOperations::saveComment($id, $comment , $product_title );
 
+    # $id               : user id 'ip'| 'id'
+    # $comment          : user comment 
+    # $product_title    : name of product
 
 
 
