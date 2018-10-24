@@ -5,7 +5,7 @@
     #contact info   :   saidmaster88@gmail.com
                         essalmi.mina@gmail.com
     #User Guid      :
-
+ 
 ################################# Quick introduction ############################################
 
       Our Plugin is designed to all Developer using PHP technology specialy  E-Commerce  WebSite,
